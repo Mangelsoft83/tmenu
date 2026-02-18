@@ -1,0 +1,2 @@
+#!/bin/bash
+exec swaybg -i ~/Pictures/Wallpapers/wallhaven_dpgpy3.jpg -m fill

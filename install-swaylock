@@ -1,0 +1,30 @@
+sudo dnf remove swaylock swaylock-effects
+sudo rm -f /usr/bin/swaylock
+sudo rm -f /usr/local/bin/swaylock
+
+#Dependencies
+sudo dnf install -y \
+  meson \
+  ninja \
+  gcc-c++ \
+  wayland-devel \
+  wayland-protocols-devel \
+  libxkbcommon-devel \
+  pam-devel \
+  cairo-devel \
+  gdk-pixbuf2-devel \
+  libdrm-devel \
+  systemd-devel \
+  pkg-config \
+  scdoc \
+  wlroots-devel \
+  libinput-devel
+
+cd ~/Downloads/
+git clone https://github.com/swaywm/swaylock.git
+cd swaylock
+
+meson setup build --prefix=/usr/local
+ninja -C build
+sudo ninja -C build install
+

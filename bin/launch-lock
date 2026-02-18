@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Check of er een fullscreen window actief is
+if niri msg -j windows | grep -q '"is_fullscreen": true'; then
+    echo "Fullscreen actief → geen suspend"
+    exit 0
+fi
+# Kill any old swaylock (defensive)
+pkill -9 swaylock 2>/dev/null
+
+# Short delay to let compositor settle
+sleep 0.2
+# Lock screen (transparent background)
+swaylock \
+  --color 2e3440ff \
+  -i ~/Pictures/Wallpapers/wallhaven-3qqdg6.jpg
+
+  # --inside-color 2e3440cc \
+  # --font "JetBrainsMono Nerd Font" \
+

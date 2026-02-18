@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# huidig profiel ophalen
+current="$(powerprofilesctl get)"
+
+# vaste volgorde
+profiles=("power-saver" "balanced" "performance")
+
+# huidige profiel eerst zetten
+menu="$current"
+for p in "${profiles[@]}"; do
+    [[ "$p" == "$current" ]] && continue
+    menu+=$'\n'"$p"
+done
+
+# fuzzel prompt
+choice="$(printf "%s\n" "$menu" | fuzzel --dmenu -p "Power profile:")"
+[ -z "${choice:-}" ] && exit 0
+
+# alleen zetten als hij verandert
+if [[ "$choice" != "$current" ]]; then
+    powerprofilesctl set "$choice"
+fi
+

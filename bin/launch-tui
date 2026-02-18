@@ -1,0 +1,4 @@
+#!/bin/bash
+CMD="${1:-impala-nm}"
+exec foot --app-id tui-popup "$CMD"
+#exec foot --app-id tui-popup $1

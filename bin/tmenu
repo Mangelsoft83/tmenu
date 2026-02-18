@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+main() {
+  choice=$(printf "%s\n" \
+	  "⏻" \
+	  "Setup" \
+	  "Install" \
+  	  "System" \
+	  | fuzzel --dmenu -p "Menu: ")
+  case "$choice" in \
+	  "⏻")  power;; 
+	  "Setup")   setup ;;
+	  "Install") install ;;
+	  "System")  system ;;
+    *) exit 0 ;;
+  esac
+}
+
+setup() {
+  choice=$(printf "%s\n" \
+    "Back" \
+    "Setup: Wi-Fi" \
+    "Setup: Bluetooth" \
+    "Setup: Waybar" \
+    "Setup: Timezone" \
+    "Setup: Monitors" \
+    | fuzzel --dmenu -p "Setup: ")
+  case "$choice" in
+    "Setup: Wi-Fi") launch-tui impala-nm ;;
+    "Setup: Bluetooth") launch-tui bluetui ;;
+    "Setup: Waybar") foot -e nvim ~/.config/waybar/config.jsonc ;;
+    "Setup: Timezone") launch-set-timezone ;;
+    "Setup: Monitors") launch-monitor-select ;;
+    "Back") main ;;
+    *) exit 0 ;;
+  esac
+}
+
+install() {
+  choice=$(printf "%s\n" \
+    "Back" \
+    | fuzzel --dmenu -p "Install: ")
+  case "$choice" in
+    "Back") main ;;
+    *) exit 0 ;;
+  esac
+}
+
+system() {
+  choice=$(printf "%s\n" \
+    "Back" \
+    "System: Power profile" \
+    "System: Restart Waybar" \
+    "System: Power-menu" \
+    | fuzzel --dmenu -p "System: ")
+  case "$choice" in
+    "System: Power profile") foot -e sh -lc 'powerprofilesctl && read -p "Enter profile: " p; powerprofilesctl set "$p"' ;;
+    "System: Restart Waybar") pkill waybar; waybar & ;;
+    "System: Power-menu") power-menu;;
+    "Back") main ;;
+    *) exit 0 ;;
+  esac
+}
+
+power(){
+	power-menu
+}
+main

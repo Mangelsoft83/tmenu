@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+choice=$(printf "%s\n" \
+  "⏾ Standby" \
+  "⏻ Shutdown" \
+  " Restart" \
+  " Lock" \
+  "Cancel" \
+  | fuzzel --dmenu -p "Power:")
+
+case "$choice" in
+  "⏻ Shutdown") systemctl poweroff ;;
+  " Restart")  systemctl reboot ;;
+  "⏾ Standby")  systemctl suspend ;;
+  " Lock")     launch-lock;;
+  *) exit 0 ;;
+esac
+

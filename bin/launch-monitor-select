@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# huidig profiel ophalen
+wd="/home/thijs/.local/share/tmenu/niri"
+wd2="/home/thijs/.local/share/tmenu/niri/outputs"
+wd3="/home/thijs/.config/niri"
+
+# vaste volgorde
+profiles=("power-saver" "balanced" "performance")
+
+# huidige profiel eerst zetten
+menu="$(ls $wd2)"
+
+# fuzzel prompt
+choice="$(printf "%s\n" "$menu" | fuzzel --dmenu -p "Power profile:")"
+[ -z "${choice:-}" ] && exit 0
+
+# kopieer keuze naar outputs.kdl
+$(cp $wd2/$choice $wd/output.kdl)
+
+$(cat $wd/readme.txt $wd/input.kdl $wd/output.kdl $wd/layout.kdl $wd/startup.kdl $wd/rules.kdl $wd/keybinds.kdl  > $wd/config.kdl)
+
+$(cp $wd/config.kdl $wd3/config.kdl)
