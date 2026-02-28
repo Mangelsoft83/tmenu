@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+LOCK="/home/thijs/.local/share/tmenu/bin/launch-lock"
+
+# Luister naar logind; bij PrepareForSleep(false) = resumed
+gdbus monitor --system \
+  --dest org.freedesktop.login1 \
+  --object-path /org/freedesktop/login1 |
+while IFS= read -r line; do
+  # We zoeken specifiek naar: PrepareForSleep (false)
+  if [[ "$line" == *"PrepareForSleep"* && "$line" == *"false"* ]]; then
+    # kleine delay kan nodig zijn zodat Wayland session “ready” is
+    sleep 0.5
+    "$LOCK" || true
+  fi
+done
