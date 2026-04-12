@@ -13,6 +13,7 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Space{ spawn "tmenu"; }
+    Mod+Insert { spawn "copyq" "toggle"; }
 
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.

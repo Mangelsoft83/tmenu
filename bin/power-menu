@@ -2,8 +2,8 @@
 set -euo pipefail
 
 choice=$(printf "%s\n" \
-  " Lock" \
   "⏾ Standby" \
+  " Lock" \
   "⏻ Shutdown" \
   " Restart" \
   "Cancel" \

@@ -1,3 +1,11 @@
 swayidle -w \
   timeout 600 'launch-lock' 
-  #\before-sleep 'launch-lock'
+ #!/usr/bin/env bash
+
+if pgrep -x swayidle > /dev/null; then
+    pkill -x swayidle
+else
+    swayidle -w \
+        timeout 600 'swaylock -f' \
+        #timeout 900 'systemctl suspend' &
+fi #\before-sleep 'launch-lock'

@@ -1,3 +1,4 @@
+spawn-sh-at-startup "env QT_QPA_PLATFORM=xcb copyq"
 spawn-at-startup "waybar"
 spawn-at-startup "set-background"
 spawn-at-startup "launch-swayidle"
