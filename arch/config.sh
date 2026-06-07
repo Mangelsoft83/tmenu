@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DISK="/dev/nvme0n1"
+DISK="/dev/vda"
 EFI_PART="${DISK}p1"
 ROOT_PART="${DISK}p2"
 
