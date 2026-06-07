@@ -14,6 +14,10 @@ sgdisk --zap-all "$DISK"
 sgdisk -n 1:0:+1G -t 1:ef00 -c 1:EFI "$DISK"
 sgdisk -n 2:0:0   -t 2:8300 -c 2:ROOT "$DISK"
 
+partprobe "$DISK"
+udevadm settle
+sleep 2
+
 mkfs.fat -F32 "$EFI_PART"
 mkfs.ext4 -F "$ROOT_PART"
 
