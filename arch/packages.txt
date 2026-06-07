@@ -1,0 +1,17 @@
+base
+linux
+linux-firmware
+amd-ucode
+intel-ucode
+networkmanager
+sudo
+git
+neovim
+foot
+niri
+waybar
+fuzzel
+wl-clipboard
+brightnessctl
+playerctl
+pavucontrol
