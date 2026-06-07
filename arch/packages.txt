@@ -57,9 +57,8 @@ qt6-wayland
 ripgrep
 swaybg
 swaylock
-systemd-bootctl
+systemd
 ttf-jetbrains-mono-nerd
-typora
 unzip
 vulkan-asahi
 vulkan-intel
@@ -71,5 +70,4 @@ xdg-desktop-portal-gnome
 xdg-desktop-portal-gtk
 xdg-user-dirs
 xournalpp
-yay
 zip
