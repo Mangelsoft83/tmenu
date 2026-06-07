@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 
 DISK="/dev/vda"
-EFI_PART="${DISK}p1"
-ROOT_PART="${DISK}p2"
+
+if [[ "$DISK" =~ nvme|mmcblk|loop ]]; then
+  EFI_PART="${DISK}p1"
+  ROOT_PART="${DISK}p2"
+else
+  EFI_PART="${DISK}1"
+  ROOT_PART="${DISK}2"
+fi
 
 HOSTNAME="arch-thijs"
 USERNAME="thijs"
