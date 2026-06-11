@@ -15,7 +15,7 @@ dkms
 docker
 docker-buildx
 docker-compose
-efiboormgr
+efibootmgr
 eog
 fastfetch
 fd
