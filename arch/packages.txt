@@ -15,6 +15,7 @@ dkms
 docker
 docker-buildx
 docker-compose
+efiboormgr
 eog
 fastfetch
 fd
@@ -32,6 +33,7 @@ htop
 impala
 intel-ucode
 libnotify
+limine
 linux
 linux-firmware
 mako
