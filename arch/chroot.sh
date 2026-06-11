@@ -30,7 +30,6 @@ chmod 440 /etc/sudoers.d/wheel
 mkdir -p /boot/EFI/BOOT
 
 cp /usr/share/limine/BOOTX64.EFI /boot/EFI/BOOT/
-cp /usr/share/limine/limine.conf /boot/
 
 ROOT_UUID=$(blkid -s UUID -o value "$ROOT_PART")
 
