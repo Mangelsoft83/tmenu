@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DISK="/dev/vda"
+DISK="/dev/sda"
 
 if [[ "$DISK" =~ nvme|mmcblk|loop ]]; then
   EFI_PART="${DISK}p1"
