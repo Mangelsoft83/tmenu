@@ -49,12 +49,12 @@ TIMEOUT=5
     MODULE_PATH=boot():/initramfs-linux.img
 EOF
 
-efibootmgr \
-  --create \
-  --disk "$DISK" \
-  --part 1 \
-  --label "Limine" \
-  --loader '\EFI\BOOT\BOOTX64.EFI'
+#efibootmgr \
+#  --create \
+#  --disk "$DISK" \
+#  --part 1 \
+#  --label "Limine" \
+#  --loader '\EFI\BOOT\BOOTX64.EFI'
 # cat > /boot/loader/loader.conf <<EOF
 # default arch.conf
 # timeout 3
